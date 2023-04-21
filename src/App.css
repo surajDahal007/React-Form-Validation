@@ -1,6 +1,6 @@
 html,body{
   background:url('../public/car.jpg');
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .main{
@@ -14,11 +14,11 @@ html,body{
   margin-left: 40%;
   margin-top:3%;
   padding:20px;
-
 }
 
 .heading{
-  margin-left: 30%;
+  margin-left: 35%;
+  margin-top: -2%;
 }
 
 .inputs{
@@ -39,14 +39,24 @@ html,body{
   justify-content: center;
   background: blue;
   color:white;
+  font-size: 18px;
   font-weight: bold;
   padding:7px;
   cursor:pointer;
-  width:85%;
-  margin-top: 10%;
-
+  width:93%;
 }
 
 .submitText{
-  margin-left: 35%;
+  margin-left: 5%;
+}
+
+.clear{
+  background-color:rgb(110, 22, 37);
+  color:white;
+  padding:5px;
+  border:1px solid pink;
+  border-radius:10px;
+  font-size: 18px;
+  margin-top: 2%;
+  cursor: pointer;
 }

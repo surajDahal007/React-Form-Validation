@@ -8,9 +8,17 @@ export default function App(){
   const[birthday,setBirthday] = useState("");
   const[password,setPassword] = useState("");
   const[cpassword,setCpassword]= useState("");
+  
 
-  const handleClick = ()=>{
-    console.log("Form is submitted");
+  const handleClick = (e)=>{
+    e.preventDefault();
+    console.log("Form is checked");
+  
+    setName("");
+    setEmail("");
+    setBirthday("");
+    setPassword("");
+    setCpassword("");
 
     var name = document.form.fname;
     var email = document.form.femail;
@@ -28,14 +36,19 @@ export default function App(){
       return false;
     }
 
+    if(name.value.length>10 || name.value.length<4){
+      name.focus();
+      setName("*Max 10 & Min 4 characters allowed")
+      console.log("Max 10 and Min 4 characters allowed");
+      return false;
+    }
+
     if(email.value.length<=0){
       email.focus();
       setEmail("*Email is required");
       console.log("Email is required");
       return false;
     }
-
-    console.log("birthday part here line 51")
 
     if(birthday.value.length<=0){
       birthday.focus();
@@ -48,6 +61,20 @@ export default function App(){
       password.focus();
       setPassword("*Password is required");
       console.log("Password is required");
+      return false;
+    }
+
+    if(password.value.length<6){
+      password.focus();
+      setPassword("*Minimum 6 characters needed")
+      console.log("Minimum 6 characters needed");
+      return false;
+    }
+
+    if(password.value.length>20){
+      password.focus();
+      setPassword("*Maximum 20 characters allowed")
+      console.log("Maximum 20 characters allowed");
       return false;
     }
 
@@ -78,8 +105,9 @@ export default function App(){
         return false;
       }
     }
-    console.log("From 81 line");
-    window.location.reload();
+
+    // alert("Form will be submitted");
+
   }
 
 
@@ -88,7 +116,7 @@ export default function App(){
     <div className='main'>
       <h2 className='heading'>Register</h2>
 
-      <form name='form'>
+      <form name='form' method='post'>
         <label><b>Username*</b></label>
         <br />
         <input type='text' placeholder='Username' name='fname' className='inputs'></input>
@@ -122,10 +150,14 @@ export default function App(){
         <input type='password' placeholder='Password' name='fcpassword' className='inputs'></input>
         <br />
         <span className='error'>{cpassword}</span>
-        
-        <div className='submit' onClick={handleClick}>
+        <br />
+
+        <input type='reset' className='clear'></input>
+        <br />
+        <br />
+        <button className='submit' onClick={handleClick}>
           <span className='submitText'>SUBMIT</span>
-        </div>
+        </button>
       </form>
     </div>
     </>
