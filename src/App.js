@@ -1,5 +1,7 @@
 import React, { useState} from 'react';
 import './App.css';
+import Swal from 'sweetalert2'
+
 
 export default function App(){
 
@@ -8,7 +10,7 @@ export default function App(){
   const[birthday,setBirthday] = useState("");
   const[password,setPassword] = useState("");
   const[cpassword,setCpassword]= useState("");
-  
+
 
   const handleClick = (e)=>{
     e.preventDefault();
@@ -92,22 +94,11 @@ export default function App(){
       return false;
     }
 
-    if(email.value.length>0){
-      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-      if(email.value.match(validRegex)){
-        return true;
-      } 
-      else{
-        setEmail("*Invalid Email");
-        console.log("Invalid email")
-        email.focus();
-        return false;
-      }
-    }
-
-    // alert("Form will be submitted");
-
+    Swal.fire({
+      icon: 'success',
+      title: 'Good Job',
+      text: 'Form filled success',
+    })
   }
 
 
@@ -116,7 +107,7 @@ export default function App(){
     <div className='main'>
       <h2 className='heading'>Register</h2>
 
-      <form name='form' method='post'>
+      <form name='form' method='post' onSubmit={handleClick}>
         <label><b>Username*</b></label>
         <br />
         <input type='text' placeholder='Username' name='fname' className='inputs'></input>
@@ -140,14 +131,14 @@ export default function App(){
 
         <label><b>Password*</b></label>
         <br />
-        <input type='password' placeholder='Password' name='fpassword' className='inputs'></input>
+        <input type="password" placeholder='Password' name='fpassword' className='inputs'></input>
         <br />
         <span className='error'>{password}</span>
         <br />
 
         <label><b>Confirm Password*</b></label>
-        <br />
-        <input type='password' placeholder='Password' name='fcpassword' className='inputs'></input>
+        <br />  
+        <input type="password" placeholder='Password' name='fcpassword' className='inputs'></input>
         <br />
         <span className='error'>{cpassword}</span>
         <br />
@@ -155,7 +146,7 @@ export default function App(){
         <input type='reset' className='clear'></input>
         <br />
         <br />
-        <button className='submit' onClick={handleClick}>
+        <button className='submit'>
           <span className='submitText'>SUBMIT</span>
         </button>
       </form>

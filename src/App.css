@@ -26,6 +26,12 @@ html,body{
   height: 25px;
 }
 
+.show{
+  font-size: 12px;
+  margin-left: 80%;
+  cursor: pointer;
+}
+
 .error{
   color:red;
   font-size: 14px;
