@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useRef, useState} from 'react';
 import './App.css';
 import Swal from 'sweetalert2'
 
@@ -11,6 +11,7 @@ export default function App(){
   const[password,setPassword] = useState("");
   const[cpassword,setCpassword]= useState("");
 
+  var formRef= useRef();
 
   const handleClick = (e)=>{
     e.preventDefault();
@@ -99,6 +100,8 @@ export default function App(){
       title: 'Good Job',
       text: 'Form filled success',
     })
+
+    formRef.current.reset();
   }
 
 
@@ -107,7 +110,7 @@ export default function App(){
     <div className='main'>
       <h2 className='heading'>Register</h2>
 
-      <form name='form' method='post' onSubmit={handleClick}>
+      <form ref={formRef} name='form' method='post' onSubmit={handleClick}>
         <label><b>Username*</b></label>
         <br />
         <input type='text' placeholder='Username' name='fname' className='inputs'></input>
@@ -141,9 +144,6 @@ export default function App(){
         <input type="password" placeholder='Password' name='fcpassword' className='inputs'></input>
         <br />
         <span className='error'>{cpassword}</span>
-        <br />
-
-        <input type='reset' className='clear'></input>
         <br />
         <br />
         <button className='submit'>
